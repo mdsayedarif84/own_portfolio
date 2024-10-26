@@ -21,14 +21,14 @@ Portfolio
                <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-30">
                   <article class="post-container">
                      <div class="post-thumb">
-                        <a href="blog-post-light.html" class="d-block position-relative overflow-hidden">
-                           <img src="img/blog/blog-post-1.jpg" class="img-fluid" alt="Blog Post">
+                        <a href="{{route('front.blog-post')}}" class="d-block position-relative overflow-hidden">
+                           <img src="{{('front/img/blog/blog-post-1.jpg')}}" class="img-fluid" alt="Blog Post">
                         </a>
                      </div>
                      <div class="post-content">
                         <div class="entry-header">
                            <h3>
-                              <a href="blog-post-light.html">How to Own Your Audience by Creating an Email List</a>
+                              <a href="{{route('front.blog-post')}}">How to Own Your Audience by Creating an Email List</a>
                            </h3>
                         </div>
                         <div class="entry-content open-sans-font">
@@ -42,14 +42,14 @@ Portfolio
                <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-30">
                   <article class="post-container">
                      <div class="post-thumb">
-                        <a href="blog-post-light.html" class="d-block position-relative overflow-hidden">
-                           <img src="img/blog/blog-post-2.jpg" class="img-fluid" alt="">
+                        <a href="{{route('front.blog-post')}}" class="d-block position-relative overflow-hidden">
+                           <img src="{{('front/img/blog/blog-post-2.jpg')}}" class="img-fluid" alt="">
                         </a>
                      </div>
                      <div class="post-content">
                         <div class="entry-header">
                            <h3>
-                              <a href="blog-post-light.html">Top 10 Toolkits for Deep Learning in 2020</a>
+                              <a href="{{route('front.blog-post')}}">Top 10 Toolkits for Deep Learning in 2020</a>
                            </h3>
                         </div>
                         <div class="entry-content open-sans-font">
@@ -63,14 +63,14 @@ Portfolio
                <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-30">
                   <article class="post-container">
                      <div class="post-thumb">
-                        <a href="blog-post-light.html" class="d-block position-relative overflow-hidden">
-                           <img src="img/blog/blog-post-3.jpg" class="img-fluid" alt="">
+                        <a href="{{route('front.blog-post')}}" class="d-block position-relative overflow-hidden">
+                           <img src="{{('front/img/blog/blog-post-3.jpg')}}" class="img-fluid" alt="">
                         </a>
                      </div>
                      <div class="post-content">
                         <div class="entry-header">
                            <h3>
-                              <a href="blog-post-light.html">Everything You Need to Know About Web Accessibility</a>
+                              <a href="{{route('front.blog-post')}}">Everything You Need to Know About Web Accessibility</a>
                            </h3>
                         </div>
                         <div class="entry-content open-sans-font">
@@ -84,14 +84,14 @@ Portfolio
                <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-30">
                   <article class="post-container">
                      <div class="post-thumb">
-                        <a href="blog-post-light.html" class="d-block position-relative overflow-hidden">
-                           <img src="img/blog/blog-post-4.jpg" class="img-fluid" alt="">
+                        <a href="{{route('front.blog-post')}}" class="d-block position-relative overflow-hidden">
+                           <img src="{{('front/img/blog/blog-post-4.jpg')}}" class="img-fluid" alt="">
                         </a>
                      </div>
                      <div class="post-content">
                         <div class="entry-header">
                            <h3>
-                              <a href="blog-post-light.html">How to Inject Humor & Comedy Into Your Brand</a>
+                              <a href="{{route('front.blog-post')}}">How to Inject Humor & Comedy Into Your Brand</a>
                            </h3>
                         </div>
                         <div class="entry-content open-sans-font">
@@ -105,14 +105,14 @@ Portfolio
                <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-30">
                   <article class="post-container">
                      <div class="post-thumb">
-                        <a href="blog-post-light.html" class="d-block position-relative overflow-hidden">
-                           <img src="img/blog/blog-post-5.jpg" class="img-fluid" alt="">
+                        <a href="{{route('front.blog-post')}}" class="d-block position-relative overflow-hidden">
+                           <img src="{{('front/img/blog/blog-post-5.jpg')}}" class="img-fluid" alt="">
                         </a>
                      </div>
                      <div class="post-content">
                         <div class="entry-header">
                            <h3>
-                              <a href="blog-post-light.html">Women in Web Design: How To Achieve Success</a>
+                              <a href="{{route('front.blog-post')}}">Women in Web Design: How To Achieve Success</a>
                            </h3>
                         </div>
                         <div class="entry-content open-sans-font">
@@ -126,14 +126,14 @@ Portfolio
                <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-30">
                   <article class="post-container">
                      <div class="post-thumb">
-                        <a href="blog-post-light.html" class="d-block position-relative overflow-hidden">
-                           <img src="img/blog/blog-post-6.jpg" class="img-fluid" alt="">
+                        <a href="{{route('front.blog-post')}}" class="d-block position-relative overflow-hidden">
+                           <img src="{{('front/img/blog/blog-post-6.jpg')}}" class="img-fluid" alt="">
                         </a>
                      </div>
                      <div class="post-content">
                         <div class="entry-header">
                            <h3>
-                              <a href="blog-post-light.html">Evergreen versus topical content: An overview</a>
+                              <a href="{{route('front.blog-post')}}">Evergreen versus topical content: An overview</a>
                            </h3>
                         </div>
                         <div class="entry-content open-sans-font">

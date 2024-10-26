@@ -27,4 +27,8 @@ class HomeController extends Controller
     {
         return view('front.page.blog');
     }
+    public function blogPost()
+    {
+        return view('front.page.blog-post');
+    }
 }

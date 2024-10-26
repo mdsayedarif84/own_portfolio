@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Front\Home\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\RequestGuard;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -11,3 +13,21 @@ Route::get('/about', [HomeController::class, 'about'])->name('front.about');
 Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('front.portfolio');
 Route::get('/contact', [HomeController::class, 'contact'])->name('front.contact');
 Route::get('/blog', [HomeController::class, 'blog'])->name('front.blog');
+Route::get('/blog-post', [HomeController::class, 'blogPost'])->name('front.blog-post');
+
+//admin
+Route::middleware('admin:admin')->group(function () {
+    Route::get('admin/login', [AdminLoginController::class, 'loginForm']);
+    Route::post('admin/login', [AdminLoginController::class, 'store'])->name('admin.loginStore');
+});
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'verified',])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('dashboard');
+    })->name('admin_dashboard');
+});

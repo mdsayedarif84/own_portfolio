@@ -143,7 +143,7 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="img/projects/project-1.jpg" alt="Portolio Image">
+                        <img src="{{asset('front/img/projects/project-1.jpg') }}" alt="Portolio Image">
                         <!-- Main Project Content Ends -->
                      </figure>
                   </li>
@@ -222,13 +222,13 @@ Portfolio
                            <!-- The slideshow -->
                            <div class="carousel-inner">
                               <div class="carousel-item active">
-                                 <img src="img/projects/project-3.jpg" alt="slide 1">
+                                 <img src="{{asset('front/img/projects/project-3.jpg')}}" alt="slide 1">
                               </div>
                               <div class="carousel-item">
-                                 <img src="img/projects/project-2.jpg" alt="slide 2">
+                                 <img src="{{asset('front/img/projects/project-2.jpg')}}" alt="slide 2">
                               </div>
                               <div class="carousel-item">
-                                 <img src="img/projects/project-1.jpg" alt="slide 3">
+                                 <img src="{{asset('front/img/projects/project-1.jpg')}}" alt="slide 3">
                               </div>
                            </div>
                         </div>
@@ -265,8 +265,8 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <video id="video" class="responsive-video" controls poster="img/projects/project-1.jpg">
-                           <source src="img/projects/video.mp4" type="video/mp4">
+                        <video id="video" class="responsive-video" controls poster="{{asset('front/img/projects/project-1.jpg')}}">
+                           <source src="{{asset('front/img/projects/video.mp4')}}" type="video/mp4">
                         </video>
                         <!-- Main Project Content Ends -->
                      </figure>
@@ -301,7 +301,7 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="img/projects/project-5.jpg" alt="Portolio Image">
+                        <img src="{{asset('front/img/projects/project-5.jpg')}}" alt="Portolio Image">
                         <!-- Main Project Content Ends -->
                      </figure>
                   </li>
@@ -335,7 +335,7 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="img/projects/project-6.jpg" alt="Portolio Image">
+                        <img src="{{asset('front/img/projects/project-6.jpg')}}" alt="Portolio Image">
                         <!-- Main Project Content Ends -->
                      </figure>
                   </li>
@@ -369,7 +369,7 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="img/projects/project-7.jpg" alt="Portolio Image">
+                        <img src="{{asset('front/img/projects/project-7.jpg')}}" alt="Portolio Image">
                         <!-- Main Project Content Ends -->
                      </figure>
                   </li>
@@ -403,7 +403,7 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="img/projects/project-8.jpg" alt="Portolio Image">
+                        <img src="{{asset('front/img/projects/project-8.jpg')}}" alt="Portolio Image">
                         <!-- Main Project Content Ends -->
                      </figure>
                   </li>
@@ -437,7 +437,7 @@ Portfolio
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="img/projects/project-9.jpg" alt="Portolio Image">
+                        <img src="{{asset('front/img/projects/project-9.jpg')}}" alt="Portolio Image">
                         <!-- Main Project Content Ends -->
                      </figure>
                   </li>
@@ -446,13 +446,13 @@ Portfolio
                <!-- Portfolio Navigation Starts -->
                <nav>
                   <span class="icon nav-prev">
-                     <img src="img/projects/navigation/left-arrow.png" alt="previous">
+                     <img src="{{ asset('front/img/projects/navigation/left-arrow.png') }}" alt="previous">
                   </span>
                   <span class="icon nav-next">
-                     <img src="img/projects/navigation/right-arrow.png" alt="next">
+                     <img src="{{ asset('front/img/projects/navigation/right-arrow.png') }}" alt="next">
                   </span>
                   <span class="nav-close">
-                     <img src="img/projects/navigation/close-button.png" alt="close">
+                     <img src="{{ asset('front/img/projects/navigation/close-button.png') }}" alt="close">
                   </span>
                </nav>
                <!-- Portfolio Navigation Ends -->
