@@ -1,6 +1,6 @@
 @extends('front.master.master')
 @section('title')
-Portfolio
+BlogPost
 @endsection
 @section('body')
 <!-- Live Style Switcher Starts - demo only -->

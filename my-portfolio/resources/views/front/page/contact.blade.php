@@ -1,6 +1,6 @@
 @extends('front.master.master')
 @section('title')
-Portfolio
+Contact
 @endsection
 @section('body')
 <div class="page page--current" id="contact">
