@@ -34,8 +34,8 @@
                 <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                 <select id="status" name="status" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                     <option selected>Select Status</option>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
                 </select>
             </div>
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

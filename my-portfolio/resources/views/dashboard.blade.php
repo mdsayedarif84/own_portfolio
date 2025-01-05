@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
 
@@ -34,6 +34,14 @@
     @livewireScripts
     <!-- /.control-sidebar -->
     @include('admin.dashboard.js')
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    @yield('customJs')
 </body>
 
 </html>

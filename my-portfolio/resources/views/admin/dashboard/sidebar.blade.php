@@ -29,13 +29,42 @@
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
                <a href="{{route('dashboard')}}" class="nav-link active">
+                  <i class="nav-icon fab fa-artstation"></i>
+                  <p>
+                     Dashboard
+                     <i class="right fas fa-angle-left"></i>
+                  </p>
+               </a>
+
+            </li>
+            <li class="nav-item ">
+               <a href="" class="nav-link">
                   <i class="nav-icon fas fa-home"></i>
                   <p>
                      Home
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
-
+               <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                     <a href="{{route('admin.home')}}" class="nav-link">
+                        <i class="far fas fa-user-md nav-icon"></i>
+                        <p>Profile</p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="{{route('admin.profileList')}}" class="nav-link">
+                        <i class="fas fa-list-ol nav-icon"></i>
+                        <p>Profile List</p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="pages/tables/jsgrid.html" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>jsGrid</p>
+                     </a>
+                  </li>
+               </ul>
             </li>
             <li class="nav-item">
                <a href="{{route('admin.about')}}" class="nav-link">
@@ -76,39 +105,13 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-edit"></i>
+               <a href="{{route('admin.logout')}}" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>
-                     Forms
+                     Logout
                      <i class="fas fa-angle-left right"></i>
                   </p>
                </a>
-               <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                     <a href="pages/forms/general.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>General Elements</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="pages/forms/advanced.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Advanced Elements</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="pages/forms/editors.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Editors</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="pages/forms/validation.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Validation</p>
-                     </a>
-                  </li>
-               </ul>
             </li>
             <li class="nav-item">
                <a href="#" class="nav-link">

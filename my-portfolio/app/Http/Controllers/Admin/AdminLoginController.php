@@ -21,14 +21,24 @@ use Laravel\Fortify\Http\Requests\LoginRequest;
 use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Response\LoginResponse;
-
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
     public function loginForm()
     {
         return view('auth.login', ['guard' => 'admin']);
+    }
+    public function logout(Request $request): LogoutResponse
+    {
+        $this->guard->logout();
+
+        if ($request->hasSession()) {
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+
+        return app(LogoutResponse::class);
     }
     /**
      * The guard implementation.
