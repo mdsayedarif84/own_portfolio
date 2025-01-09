@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum,admin', 'throttle:10,1', config('jetstream.auth
     Route::post('/profile/store', [AdminHomeController::class, 'store'])->name('admin.profileStore');
     Route::get('profile/list', [AdminHomeController::class, 'profileList'])->name('admin.profileList');
     Route::get('profile/{id}/edit', [AdminHomeController::class, 'profileEdit'])->name('admin.profileEdit');
+    Route::post('profile/update', [AdminHomeController::class, 'profileUpdate'])->name('admin.profileUpdate');
     Route::get('/about', [AdminHomeController::class, 'about'])->name('admin.about');
     Route::get('/portfolio', [AdminHomeController::class, 'portfolio'])->name('admin.portfolio');
     Route::get('/contact', [AdminHomeController::class, 'contact'])->name('admin.contact');

@@ -29,6 +29,7 @@ Profile List Page
                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                      <tr>
+                        <th>SL No</th>
                         <th>Profile Img</th>
                         <th>Name</th>
                         <th>Work Expericence</th>
@@ -39,12 +40,14 @@ Profile List Page
                   </thead>
                   <tbody>
                      @if($profiles->isNotEmpty())
+                     @php($i=1)
                      @foreach($profiles as $key=> $item)
 
                      <tr>
+                        <td>{{$i++}}</td>
                         <td>
-                           @if(!empty($item->profile_img) && file_exists(public_path('upload/admin_images/' . $item->profile_img)))
-                           <img src="{{asset('upload/admin_images/' .$item->profile_img)}}" class="img-thumbnail" width="50">
+                           @if(!empty($item->profile_img))
+                           <img src="{{asset($item->profile_img)}}" class="img-thumbnail" width="50">
                            @else
                            <img src="{{asset('upload/admin_images/DefaultImg.png')}}" class="img-thumbnail" width="50">
                            @endif

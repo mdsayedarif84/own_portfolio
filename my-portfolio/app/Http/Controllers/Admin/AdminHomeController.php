@@ -8,6 +8,10 @@ use App\Models\Home;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\Facades\Image;
+
 
 
 class AdminHomeController extends Controller
@@ -20,39 +24,20 @@ class AdminHomeController extends Controller
     {
         return view('admin.pages.profile.profile');
     }
-    protected function profileImg($request)
-    {
-        $file           =   $request->file('profile_img');
-        $filetype       =   $file->getClientOriginalExtension();
-        $shortName      =   substr($request->name, 0, 3);
-        $filename       =   strtolower($shortName) . '.' . $filetype;
-        $directory      =   'upload/admin_images/';
-        $imageUrl       =   $file->move($directory, $filename);
-        return  $imageUrl;
-    }
-    protected function profileStore($request, $imageUrl)
-    {
-        $profile                    =   new Home();
-        $profile->name              =   trim($request->name);
-        $profile->work_experience   =   trim($request->work_experience);
-        $profile->description       =   trim($request->description);
-        $profile->status            =   $request->status;
-        $profile->profile_img       =   $imageUrl;
-    }
-    public function store(Request $request)
+    protected function validate($request)
     {
         $validator = Validator::make(
             $request->all(),
             [
                 'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max size 2MB
-                'name' => 'required',
+                'name' => 'required|string',
                 'work_experience' => 'required',
                 'description' => 'required',
                 'status' => 'required',
             ],
             [
-                'profile_img.required' => 'Please upload an image.',
-                'profile_img.image' => 'The file must be an image.',
+                'profile_img.required' => 'Please upload a image.',
+                'profile_img.image' => 'The file must be a image.',
                 'profile_img.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
                 'profile_img.max' => 'The image size may not be greater than 2MB.',
                 'name.required' => 'Input Correct Name!',
@@ -61,24 +46,43 @@ class AdminHomeController extends Controller
                 'status.required' => 'Select Status!',
             ]
         );
-        if ($validator->passes()) {
-            $profile                    =   new Home();
-            $profile->name              =   trim($request->name);
-            $profile->work_experience   =   trim($request->work_experience);
-            $profile->description       =   trim($request->description);
-            $profile->status            =   $request->status;
+        return $validator;
+    }
+    protected function imgUpload($request)
+    {
+        if ($request->file('profile_img')) {
+            $imgfile            =   $request->file('profile_img');
+            $name               =   $request->name;
+            $shortName      =   substr($name, 0, 5);
+            $imgtype       =   $imgfile->getClientOriginalExtension();
+            $imgname       =   strtolower($shortName) . '-' . date('YmdHi') . '.' . $imgtype;
+            // Define the upload directory
+            $directory      =   'upload/admin_images/';
+            $imgurl =   $directory . $imgname;
+            $img = ImageManager::imagick()->read($imgfile);
+            $img->resize(300, 168);
+            $img->save($imgurl);
+            return $imgurl;
+        }
+    }
+    protected function profileStoreInfo($request, $imgurl)
+    {
+        $profile                    =   new Home();
+        $profile->name              =   trim($request->name);
+        $profile->work_experience   =   trim($request->work_experience);
+        $profile->description       =   trim($request->description);
+        $profile->status            =   $request->status;
+        $profile->profile_img       =   $imgurl;
+        $profile->save();
+    }
 
-            $file           =   $request->file('profile_img');
-            $shortName      =   substr($profile->name, 0, 5);
-            $filetype       =   $file->getClientOriginalExtension();
-            $filename       =   strtolower($shortName) . '-' . date('YmdHi') . '.' . $filetype;
-            $directory      =   public_path('upload/admin_images/');
-            $file->move($directory, $filename);
-            $profile->profile_img = $filename;
-            // return $profile;
-            $profile->save();
-            // $profile->profile_img = 'upload/admin_images/' . $filename;
-            // return redirect()->back()->with('success', 'Profile Info Save Successfully ');
+    public function store(Request $request)
+    {
+        $validator = $this->validate($request);
+        if ($validator->passes()) {
+            $imgurl = $this->imgUpload($request);
+            $this->profileStoreInfo($request, $imgurl);
+            return redirect()->back()->with('success', 'Profile Info Save Successfully ');
             // $request->session()->flash('success', 'Profile Info Save Successfully ');
             // return response()->json([
             //     'status' => true,
@@ -106,6 +110,41 @@ class AdminHomeController extends Controller
             return redirect()->route('admin.profileList');
         }
         return view('admin.pages.profile.profile_edit', compact('profile'));
+    }
+    public function profileUpdate(Request $request)
+    {
+        $profileInfo    =   $request->file('profile_img');
+        if ($profileInfo) {
+            $profile                    =   Home::find($request->profile_id);
+            unlink($profile->profile_img);
+
+            $name               =   $request->name;
+            $shortName      =   substr($name, 0, 5);
+            $imgtype       =   $profileInfo->getClientOriginalExtension();
+            $imgname       =   strtolower($shortName) . '-' . date('YmdHi') . '.' . $imgtype;
+            // Define the upload directory
+            $directory      =   'upload/admin_images/';
+            $imgurl =   $directory . $imgname;
+            $img = ImageManager::imagick()->read($profileInfo);
+            $img->resize(300, 168);
+            $img->save($imgurl);
+
+            $profile->name              =   trim($request->name);
+            $profile->work_experience   =   trim($request->work_experience);
+            $profile->description       =   trim($request->description);
+            $profile->profile_img       =   $imgurl;
+            $profile->status            =   $request->status;
+            $profile->save();
+            return redirect('/profile/list')->with('success', 'Profile Info Update Successfully ');
+        } else {
+            $profile                    =   Home::find($request->profile_id);
+            $profile->name              =   trim($request->name);
+            $profile->work_experience   =   trim($request->work_experience);
+            $profile->description       =   trim($request->description);
+            $profile->status            =   $request->status;
+            $profile->save();
+            return redirect('/profile/list')->with('success', 'Profile Info Update Successfully ');
+        }
     }
 
     public function about()

@@ -27,27 +27,35 @@ Home
                <h3 class="card-title">Profile Form</h3>
             </div>
             <!-- form start -->
-            <form action="{{route('admin.profileStore')}}" method="post" id="profileForm" name="profileForm" class="form-horizontal" enctype="multipart/form-data">
+            <form action="{{ route('admin.profileStore') }}" method="post" id="profileForm" name="profileForm" enctype="multipart/form-data">
                @csrf
                <div class="card-body">
                   <div class="form-group row">
                      <label for="profile_img" class="col-sm-2 col-form-label"> Porofile Image</label>
                      <div class="col-sm-10">
-                        <input type="file" name="profile_img" class="form-control" id="profile_img">
+                        <input type="file" name="profile_img" value="{{ old('profile_img') }}" class="form-control" id="profile_img">
+                        <span class="text-danger">{{ $errors->has('profile_img') ? $errors->first('profile_img') : ' ' }}</span>
                         <p></p>
                      </div>
                   </div>
                   <div class="form-group row">
                      <label for="name" class="col-sm-2 col-form-label">Your Name</label>
                      <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Your Name">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('category_name') is-invalid @enderror" id="name" placeholder="Enter Your Name">
+                        <!-- <span class="text-danger">{{ $errors->has('name') ? $errors->first('name') : ' ' }}</span> -->
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                           <strong>{{ $errors->has('name') ? $errors->first('name') : ' '  }}</strong>
+                        </span>
+                        @enderror
                         <p></p>
                      </div>
                   </div>
                   <div class="form-group row">
                      <label for="work_experience" class="col-sm-2 col-form-label">Work Expericence</label>
                      <div class="col-sm-10">
-                        <input type="text" name="work_experience" class="form-control" id="work_experience" placeholder="Enter Your Work Expericence">
+                        <input type="text" name="work_experience" value="{{ old('work_experience') }}" class="form-control" id="work_experience" placeholder="Enter Your Work Expericence">
+                        <span class="text-danger">{{ $errors->has('work_experience') ? $errors->first('work_experience') : ' ' }}</span>
                         <p></p>
                      </div>
                   </div>
@@ -59,13 +67,14 @@ Home
                      </div>
                   </div>
                   <div class="form-group row">
-                     <label for="status" class="col-sm-2 col-form-label">Status</label>
+                     <label for="status" class="col-sm-2 col-form-label" value="{{ old('publication_status') }}">Status</label>
                      <div class="col-sm-10">
                         <select name="status" id="status" class="form-control">
-                           <option hidden>Select Option </option>
+                           <option id="ctghide"></option>
                            <option value="1">Active</option>
                            <option value="0">Block</option>
                         </select>
+                        <span class="text-danger">{{ $errors->has('status') ? $errors->first('status') : ' ' }}</span>
                         <p></p>
                      </div>
                   </div>
@@ -81,6 +90,12 @@ Home
 </div>
 @endsection
 @section('customJs')
+<script type="text/javascript">
+   //  $("#status option[value='2']").hide();
+   $(document).ready(function() {
+      $("#ctghide").hide();
+   });
+</script>
 <!-- <script>
    $("#profileForm").submit(function(event) {
       event.preventDefault();
