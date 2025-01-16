@@ -6,6 +6,8 @@
 <script>
    $.widget.bridge('uibutton', $.ui.button)
 </script>
+<link rel="stylesheet" href="{{asset('admin/js/bootstrap1.min.js')}}">
+
 <!-- Bootstrap 4 -->
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->

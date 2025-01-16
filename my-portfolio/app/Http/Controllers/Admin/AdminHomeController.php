@@ -89,10 +89,14 @@ class AdminHomeController extends Controller
             //     'errors' => "Profile Info Save Successfully "
             // ]);
         } else {
-            return response()->json([
-                'status' => false,
-                'errors' => $validator->errors()
-            ]);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Validation failed. Please correct the errors below.');
+            // return response()->json([
+            //     'status' => false,
+            //     'errors' => $validator->errors()
+            // ]);
         }
     }
     public function profileList()
@@ -147,10 +151,6 @@ class AdminHomeController extends Controller
         }
     }
 
-    public function about()
-    {
-        return view('admin.pages.about.about');
-    }
     public function portfolio()
     {
         return view('admin.pages.portfolio.portfolio');

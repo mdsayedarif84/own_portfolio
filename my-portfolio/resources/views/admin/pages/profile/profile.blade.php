@@ -38,11 +38,12 @@ Home
                         <p></p>
                      </div>
                   </div>
+
                   <div class="form-group row">
                      <label for="name" class="col-sm-2 col-form-label">Your Name</label>
                      <div class="col-sm-10">
                         <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('category_name') is-invalid @enderror" id="name" placeholder="Enter Your Name">
-                        <!-- <span class="text-danger">{{ $errors->has('name') ? $errors->first('name') : ' ' }}</span> -->
+                        <span class="text-danger">{{ $errors->has('name') ? $errors->first('name') : ' ' }}</span>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                            <strong>{{ $errors->has('name') ? $errors->first('name') : ' '  }}</strong>
@@ -99,7 +100,6 @@ Home
 <!-- <script>
    $("#profileForm").submit(function(event) {
       event.preventDefault();
-      // let formData = new FormData(this);
       var element = $(this);
       // $("button[type=submit)]").prop('disabled',true);
       $.ajax({

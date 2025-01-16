@@ -3,8 +3,8 @@
 use App\Http\Controllers\Front\Home\HomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminAboutController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Auth\RequestGuard;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -29,7 +29,10 @@ Route::middleware(['auth:sanctum,admin', 'throttle:10,1', config('jetstream.auth
     Route::get('profile/list', [AdminHomeController::class, 'profileList'])->name('admin.profileList');
     Route::get('profile/{id}/edit', [AdminHomeController::class, 'profileEdit'])->name('admin.profileEdit');
     Route::post('profile/update', [AdminHomeController::class, 'profileUpdate'])->name('admin.profileUpdate');
-    Route::get('/about', [AdminHomeController::class, 'about'])->name('admin.about');
+
+    Route::get('/about', [AdminAboutController::class, 'about'])->name('admin.about');
+    Route::post('/about/store', [AdminAboutController::class, 'aboutStore'])->name('admin.aboutStore');
+
     Route::get('/portfolio', [AdminHomeController::class, 'portfolio'])->name('admin.portfolio');
     Route::get('/contact', [AdminHomeController::class, 'contact'])->name('admin.contact');
     Route::get('/blog', [AdminHomeController::class, 'blog'])->name('admin.blog');

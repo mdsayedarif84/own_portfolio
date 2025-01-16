@@ -58,22 +58,30 @@
                         <p>Profile List</p>
                      </a>
                   </li>
-                  <li class="nav-item">
-                     <a href="pages/tables/jsgrid.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>jsGrid</p>
-                     </a>
-                  </li>
                </ul>
             </li>
             <li class="nav-item">
-               <a href="{{route('admin.about')}}" class="nav-link">
+               <a href="" class="nav-link">
                   <i class="nav-icon fas fa-info-circle"></i>
                   <p>
                      About
-                     <span class="right badge badge-danger">New</span>
+                     <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
+               <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                     <a href="{{route('admin.about')}}" class="nav-link">
+                        <i class="far fas fa-user-md nav-icon"></i>
+                        <p>Add About</p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="{{route('admin.profileList')}}" class="nav-link">
+                        <i class="fas fa-list-ol nav-icon"></i>
+                        <p>About List</p>
+                     </a>
+                  </li>
+               </ul>
             </li>
             <li class="nav-item">
                <a href="{{route('admin.portfolio')}}" class="nav-link">
