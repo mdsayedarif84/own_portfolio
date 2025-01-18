@@ -29,21 +29,21 @@ class AdminHomeController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max size 2MB
-                'name' => 'required|string',
-                'work_experience' => 'required',
-                'description' => 'required',
-                'status' => 'required',
+                'profile_img'               => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max size 2MB
+                'name'                      => 'required|string',
+                'work_experience'           => 'required',
+                'description'               => 'required',
+                'status'                    => 'required',
             ],
             [
-                'profile_img.required' => 'Please upload a image.',
-                'profile_img.image' => 'The file must be a image.',
-                'profile_img.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
-                'profile_img.max' => 'The image size may not be greater than 2MB.',
-                'name.required' => 'Input Correct Name!',
-                'work_experience.required' => 'Write Your Experience!',
-                'description.required' => 'Write your Description!',
-                'status.required' => 'Select Status!',
+                'profile_img.required'      => 'Please upload a image.',
+                'profile_img.image'         => 'The file must be a image.',
+                'profile_img.mimes'         => 'The image must be a file of type: jpeg, png, jpg, gif.',
+                'profile_img.max'           => 'The image size may not be greater than 2MB.',
+                'name.required'             => 'Input Correct Name!',
+                'work_experience.required'  => 'Write Your Experience!',
+                'description.required'      => 'Write your Description!',
+                'status.required'           => 'Select Status!',
             ]
         );
         return $validator;
@@ -51,15 +51,15 @@ class AdminHomeController extends Controller
     protected function imgUpload($request)
     {
         if ($request->file('profile_img')) {
-            $imgfile            =   $request->file('profile_img');
-            $name               =   $request->name;
+            $imgfile        =   $request->file('profile_img');
+            $name           =   $request->name;
             $shortName      =   substr($name, 0, 5);
-            $imgtype       =   $imgfile->getClientOriginalExtension();
-            $imgname       =   strtolower($shortName) . '-' . date('YmdHi') . '.' . $imgtype;
+            $imgtype        =   $imgfile->getClientOriginalExtension();
+            $imgname        =   strtolower($shortName) . '-' . date('YmdHi') . '.' . $imgtype;
             // Define the upload directory
             $directory      =   'upload/admin_images/';
-            $imgurl =   $directory . $imgname;
-            $img = ImageManager::imagick()->read($imgfile);
+            $imgurl         =   $directory . $imgname;
+            $img            = ImageManager::imagick()->read($imgfile);
             $img->resize(300, 168);
             $img->save($imgurl);
             return $imgurl;
@@ -78,7 +78,7 @@ class AdminHomeController extends Controller
 
     public function store(Request $request)
     {
-        $validator = $this->validate($request);
+        $validator  = $this->validate($request);
         if ($validator->passes()) {
             $imgurl = $this->imgUpload($request);
             $this->profileStoreInfo($request, $imgurl);
@@ -101,8 +101,8 @@ class AdminHomeController extends Controller
     }
     public function profileList()
     {
-        $profileData   =   Home::latest()->get();
-        $data['profiles'] = $profileData;
+        $profileData        =   Home::latest()->get();
+        $data['profiles']   = $profileData;
         // dd($data);
         return view('admin.pages.profile.profile_list', $data);
     }
@@ -122,14 +122,14 @@ class AdminHomeController extends Controller
             $profile                    =   Home::find($request->profile_id);
             unlink($profile->profile_img);
 
-            $name               =   $request->name;
-            $shortName      =   substr($name, 0, 5);
+            $name          =   $request->name;
+            $shortName     =   substr($name, 0, 5);
             $imgtype       =   $profileInfo->getClientOriginalExtension();
             $imgname       =   strtolower($shortName) . '-' . date('YmdHi') . '.' . $imgtype;
             // Define the upload directory
-            $directory      =   'upload/admin_images/';
-            $imgurl =   $directory . $imgname;
-            $img = ImageManager::imagick()->read($profileInfo);
+            $directory     =   'upload/admin_images/';
+            $imgurl        =   $directory . $imgname;
+            $img           = ImageManager::imagick()->read($profileInfo);
             $img->resize(300, 168);
             $img->save($imgurl);
 

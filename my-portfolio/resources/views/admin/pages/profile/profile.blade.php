@@ -22,7 +22,7 @@ Home
    <section class="content">
       <div class="container-fluid">
          @include('admin.pages.message')
-         <div class="card card-info">
+         <div class="card card-primary">
             <div class="card-header">
                <h3 class="card-title">Profile Form</h3>
             </div>
@@ -30,47 +30,42 @@ Home
             <form action="{{ route('admin.profileStore') }}" method="post" id="profileForm" name="profileForm" enctype="multipart/form-data">
                @csrf
                <div class="card-body">
-                  <div class="form-group row">
+                  <div class="input-group mb-3">
                      <label for="profile_img" class="col-sm-2 col-form-label"> Porofile Image</label>
                      <div class="col-sm-10">
-                        <input type="file" name="profile_img" value="{{ old('profile_img') }}" class="form-control" id="profile_img">
+                        <input type="file" name="profile_img" class="form-control @error('profile_img') is-invalid @enderror" id="profile_img">
                         <span class="text-danger">{{ $errors->has('profile_img') ? $errors->first('profile_img') : ' ' }}</span>
                         <p></p>
                      </div>
                   </div>
-
-                  <div class="form-group row">
+                  <div class="input-group mb-3">
                      <label for="name" class="col-sm-2 col-form-label">Your Name</label>
                      <div class="col-sm-10">
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('category_name') is-invalid @enderror" id="name" placeholder="Enter Your Name">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter Your Name">
                         <span class="text-danger">{{ $errors->has('name') ? $errors->first('name') : ' ' }}</span>
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                           <strong>{{ $errors->has('name') ? $errors->first('name') : ' '  }}</strong>
-                        </span>
-                        @enderror
                         <p></p>
                      </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="input-group mb-3">
                      <label for="work_experience" class="col-sm-2 col-form-label">Work Expericence</label>
                      <div class="col-sm-10">
-                        <input type="text" name="work_experience" value="{{ old('work_experience') }}" class="form-control" id="work_experience" placeholder="Enter Your Work Expericence">
+                        <input type="text" name="work_experience" value="{{ old('work_experience') }}" class="form-control @error('work_experience') is-invalid @enderror" id="work_experience" placeholder="Enter Your Work Expericence">
                         <span class="text-danger">{{ $errors->has('work_experience') ? $errors->first('work_experience') : ' ' }}</span>
                         <p></p>
                      </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="input-group mb-3">
                      <label for="description" class="col-sm-2 col-form-label">Description</label>
                      <div class="col-sm-10">
-                        <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter Your Work Expericence"></textarea>
+                        <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Enter Your Work Expericence"></textarea>
+                        <span class="text-danger">{{ $errors->has('description') ? $errors->first('description') : ' ' }}</span>
                         <p></p>
                      </div>
                   </div>
-                  <div class="form-group row">
-                     <label for="status" class="col-sm-2 col-form-label" value="{{ old('publication_status') }}">Status</label>
+                  <div class="input-group mb-3">
+                     <label for="status" class="col-sm-2 col-form-label @error('status') is-invalid @enderror" value="{{ old('publication_status') }}">Status</label>
                      <div class="col-sm-10">
-                        <select name="status" id="status" class="form-control">
+                        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                            <option id="ctghide"></option>
                            <option value="1">Active</option>
                            <option value="0">Block</option>
@@ -81,8 +76,9 @@ Home
                   </div>
                </div>
                <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Add</button>
-                  <button type="submit" class="btn btn-default float-right">Cancel</button>
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                     <button class="btn btn-primary" type="submit">Add Profile Info</button>
+                  </div>
                </div>
             </form>
          </div>

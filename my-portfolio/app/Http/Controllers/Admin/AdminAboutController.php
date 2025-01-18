@@ -17,11 +17,35 @@ class AdminAboutController extends Controller
         $validated = Validator::make(
             $request->all(),
             [
-                'fullName' => 'required|max:255',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'age' => 'required',
                 'email' => 'required',
+                'phone_number' => 'required',
+                'social_id' => 'required',
+                'nationality' => 'required',
+                'frelance' => 'required',
+                'language' => 'required',
+                'address' => 'required',
+                'happy_customers' => 'required',
+                'awards_won' => 'required',
+                'year_experience' => 'required',
+                'project' => 'required',
+                'year' => 'required',
+                'designatio' => 'required',
+                'compnay' => 'required',
+                'description' => 'required',
+
             ],
             [
-                'fullName.required' => 'Please write Full Name',
+                'first_name.required' => 'Please write First Name',
+                'last_name.required' => 'Please write Last Name',
+                'age.required' => 'Please Input Right Age',
+                'phone_number.required' => 'Please Input Phone Number',
+                'social_id.required' => 'Please Input Your Social ID',
+                'nationality.required' => 'Please Input Your Nationality',
+                'frelance.required' => 'Please Input Your frelance',
+                'language.required' => 'Please Input Your language',
             ]
         );
         return $validated;
